@@ -40,7 +40,7 @@ objects:
               spec:
                 containers:
                 - name: project-metadata-backup-cronjob
-                  image: docker.io/vadimzharov/openshift-backup-image:latest
+                  image: docker-registry.default.svc:5000/openshift/openshift-backup-image:latest
                   env:
                     - name: BACKUP_TYPE
                       value: metadata
@@ -88,7 +88,7 @@ objects:
                 serviceAccount: backup-sa
                 serviceAccountName: backup-sa
                 restartPolicy: Never
-      schedule: ${CRONJOB_SCHEDULE}
+        schedule: ${CRONJOB_SCHEDULE}
       successfulJobsHistoryLimit: 3
       suspend: false
     parameters:
@@ -130,7 +130,7 @@ objects:
                 spec:
                   containers:
                   - name: project-files-backup-cronjob
-                    image: docker.io/vadimzharov/openshift-backup-image:latest
+                    image: docker-registry.default.svc:5000/openshift/openshift-backup-image:latest
                     env:
                       - name: BACKUP_TYPE
                         value: files
@@ -189,7 +189,7 @@ objects:
                     - name: backup-target
                       persistentVolumeClaim:
                         claimName: ${CUSTOM_TAG}
-        schedule: ${CRONJOB_SCHEDULE}
+          schedule: ${CRONJOB_SCHEDULE}
         successfulJobsHistoryLimit: 3
         suspend: false
     parameters:
@@ -239,7 +239,7 @@ objects:
                 spec:
                   containers:
                   - name: project-files-backup-cronjob
-                    image: docker.io/vadimzharov/openshift-backup-image:latest
+                    image: docker-registry.default.svc:5000/openshift/openshift-backup-image:latest
                     env:
                       - name: BACKUP_TYPE
                         value: databases
@@ -296,7 +296,7 @@ objects:
                       - name: DATABASE_NAME
                         value: ${DATABASE_NAME}
                   restartPolicy: Never
-        schedule: ${CRONJOB_SCHEDULE}
+          schedule: ${CRONJOB_SCHEDULE}
         successfulJobsHistoryLimit: 3
         suspend: false                  
     parameters:
@@ -359,7 +359,7 @@ objects:
                 spec:
                   containers:
                   - name: project-all-files-backup
-                    image: docker.io/vadimzharov/openshift-backup-image:latest
+                    image: docker-registry.default.svc:5000/openshift/openshift-backup-image:latest
                     env:
                       - name: BACKUP_TYPE
                         value: all-pvcs
@@ -407,7 +407,7 @@ objects:
                   restartPolicy: Never
                   serviceAccount: backup-sa
                   serviceAccountName: backup-sa
-        schedule: ${CRONJOB_SCHEDULE}
+          schedule: ${CRONJOB_SCHEDULE}
         successfulJobsHistoryLimit: 3
         suspend: false                      
     parameters:
