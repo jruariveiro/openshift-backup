@@ -44,7 +44,7 @@ case $DATABASE_TYPE in
         ;;
     mysql)
         echo "Will try to restore mysql on service $DATABASE_SVC with user $DATABASE_USER and password $DATABASE_PASSWORD"
-        mysqldump -h $DATABASE_SVC -u $DATABASE_USER --password=$DATABASE_PASSWORD -C --all-databases | restic backup -r $RESTIC_REPOSITORY --stdin --tag databases --tag $PROJECT_NAME --tag $DATABASE_SVC --hostname $PROJECT_NAME --stdin-filename $DATABASE_SVC.sql --cache-dir /tmp/    
+        restic -r $RESTIC_REPOSITORY dump --tag $DATABASE_SVC $RESTIC_SNAPSHOT $DATABASE_SVC.sql --cache-dir /tmp/ | mysql -h $DATABASE_SVC -u $DATABASE_USER --password=$DATABASE_PASSWORD 
         ;;
 esac
 
