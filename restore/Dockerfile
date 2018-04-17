@@ -1,7 +1,7 @@
 FROM centos:latest
 MAINTAINER Vadim Zharov
 
-RUN yum install git nfs-utils openssh fuse curl wget postgresql mariadb-client golang skopeo -y && yum clean all && rm -rf /var/cache/yum
+RUN yum install git nfs-utils openssh fuse curl wget postgresql mariadb golang skopeo -y && yum clean all && rm -rf /var/cache/yum
 RUN git clone https://github.com/restic/restic \
   && cd restic \
   && go run build.go \
