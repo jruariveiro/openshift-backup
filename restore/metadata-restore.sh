@@ -49,6 +49,12 @@ sed -i '/pv.kubernetes.io/d' $TMP_DIR/$PROJECT_NAME-persistentvolumeclaims.yaml
 
 sed -i '/volumeName:/d' $TMP_DIR/$PROJECT_NAME-persistentvolumeclaims.yaml
 
+echo "+======================================================+"
+echo "| Remove stickness to templates from deploymentconfigs |"
+echo "+======================================================+"
+
+sed -i '/blockOwnerDeletion:/d' $TMP_DIR/$PROJECT_NAME-deploymentconfigs.yaml
+
 echo "+===============================================+"
 echo "| Check if there are any storage classes exist  |"
 echo "+===============================================+"

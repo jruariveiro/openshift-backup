@@ -40,7 +40,7 @@ parameters:
     required: true 
   - name: SOURCE_REPOSITORY_REF
     description: Github branch
-    value: master
+    value: centos-base
     required: true 
   - name: CONTEXT_DIR_BACKUP
     description: Directory with Dockerfile to build metadata-backup image
