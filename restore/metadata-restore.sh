@@ -49,11 +49,10 @@ sed -i '/pv.kubernetes.io/d' $TMP_DIR/$PROJECT_NAME-persistentvolumeclaims.yaml
 
 sed -i '/volumeName:/d' $TMP_DIR/$PROJECT_NAME-persistentvolumeclaims.yaml
 
-echo "+======================================================+"
-echo "| Remove stickness to templates from deploymentconfigs |"
-echo "+======================================================+"
+echo "+========================================+"
+echo "| Remove stickness to templateinstances  |"
+echo "+========================================+"
 
-#sed -i '/blockOwnerDeletion:/d' $TMP_DIR/$PROJECT_NAME-*.yaml
 sed -i ' {/^    ownerReferences:/ { :a N; /\n    resourceVersion/! ba; d} }' $TMP_DIR/$PROJECT_NAME-*.yaml
 
 echo "+===============================================+"
