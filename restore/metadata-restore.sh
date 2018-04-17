@@ -54,7 +54,7 @@ echo "| Remove stickness to templates from deploymentconfigs |"
 echo "+======================================================+"
 
 #sed -i '/blockOwnerDeletion:/d' $TMP_DIR/$PROJECT_NAME-*.yaml
-sed ' {/^    ownerReferences:/ { :a N; /\n    resourceVersion/! ba; d} }' $TMP_DIR/$PROJECT_NAME-*.yaml
+sed -i ' {/^    ownerReferences:/ { :a N; /\n    resourceVersion/! ba; d} }' $TMP_DIR/$PROJECT_NAME-*.yaml
 
 echo "+===============================================+"
 echo "| Check if there are any storage classes exist  |"
